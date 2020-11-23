@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="wadahkode">
+    <title>Document</title>
+    <style type="text/css" media="all">
+        .btn-step {
+            /*background: tomato;*/
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            padding: 7px 10px;
+            cursor: pointer;
+        }
+        .btn-step.active {
+            background: teal;
+        }
+        .btn-step.disabled {
+            background: transparent;
+            color: black;
+        }
+        
+        form {
+            margin-top: 1rem;
+        }
+        
+        .step {
+            display: flex;
+            flex-direction: row;
+        }
+        .step .step-form {
+            display: none;
+            flex: 1;
+        }
+        .step .step-form input,
+        .step .step-form select {
+            width: 95%;
+            margin-bottom: 7px;
+            padding: 10px 7px;
+        }
+        .step .step-form.active {
+            display: block;
+        }
+        ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>
+            <a href="#step-before-tab" id="step1" class="btn-step active">step a</a>
+        </li>
+        <li>
+            <a href="#step-finish-tab" id="step2" class="btn-step disabled">step b</a>
+        </li>
+    </ul>
+    <form action="" method="get" accept-charset="utf-8">
+        <div class="step">
+            <div id="step-before-tab" class="step-form active">
+                <div>
+                    <input type="text" name="fullname" id="fullname" placeholder="nama lengkap" onchange="return handleChange(this)"/>
+                </div>
+                <div>
+                    <input type="text" name="email" id="email" placeholder="email" onchange="return handleChange(this)">
+                </div>
+                <div>
+                    <input type="text" name="phone" id="phone" placeholder="nomor hp" onchange="return handleChange(this)">
+                </div>
+                <div>
+                    <select name="kategori" id="kategori" onchange="return handleChange(this)">
+                        <option value="">pilih</option>
+                        <option value="a">a</option>
+                        <option value="b">b</option>
+                        <option value="c">c</option>
+                    </select>
+                </div>
+                <button type="button" class="btn-next-order" data-target="step2" disabled>
+                    langkah selanjutnya
+                </button>
+            </div>
+            <div id="step-finish-tab" class="step-form">
+                <p>Langkah terakhir</p>
+                <button type="button" class="btn-previous-order" data-target="step1">
+                    sebelumnya
+                </button>
+                <button type="submit">Kirim</button>
+            </div>
+        </div>
+    </form>
+   
+    <script src="master.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>
